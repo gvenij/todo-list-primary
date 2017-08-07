@@ -35,6 +35,15 @@ class Model extends EventEmitter {
             this.emit('change', this.items);
         }
     }
+
+    sortItems(param){
+        const sortedItems = this.items.sort(function(a,b){
+                return b[param] - a[param];
+        });
+
+        this.emit('change', sortedItems);
+        return sortedItems;
+    }
 }
 
 export default Model;

@@ -161,7 +161,14 @@ header h1 {
     opacity: 1;
 }
 
-
+.todo-item.primary .title:after {
+    content: 'Primary';
+    margin-left: 6px;
+    padding: 2px;
+    font-size: 0.6rem;
+    background: #f0db4f;
+    border-radius: 2px;
+}
 
 /* Todo form */
 

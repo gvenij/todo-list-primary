@@ -7,15 +7,18 @@ class Controller {
         view.on('toggle', this.toggleTodo.bind(this));
         view.on('edit', this.editTodo.bind(this));
         view.on('remove', this.removeTodo.bind(this));
+        view.on('primary', this.primaryTodo.bind(this));
+        view.on('sort', this.sortTodo.bind(this));
 
         view.show(model.items);
     }
-
+ 
     addTodo(title) {
         const item = this.model.addItem({
             id: Date.now(),
             title,
-            completed: false
+            completed: false,
+            primary: false
         });
 
         this.view.addItem(item);
@@ -33,9 +36,21 @@ class Controller {
         this.view.editItem(item);
     }
 
-    removeTodo(id) {
+    removeTodo(id) { 
         this.model.removeItem(id);
-        this.view.removeItem(id);
+        this.view.removeItem(id); 
+    }
+
+    primaryTodo({id, primary}){
+        const item = this.model.updateItem(id, { primary });
+
+        this.view.primaryItem(item);
+    }
+
+    sortTodo(param){
+        const sortedItems = this.model.sortItems(param);
+
+        this.view.show(sortedItems);
     }
 }
 
