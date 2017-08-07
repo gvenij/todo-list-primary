@@ -127,7 +127,7 @@ class View extends EventEmitter {
     editItem(todo) {
         const listItem = this.findListItem(todo.id);
         const label = listItem.querySelector('.title');
-        const input = listItem.querySelector('.textfield');
+        const input = listItem.querySelector('.textfield'); 
         const editButton = listItem.querySelector('button.edit');
 
         label.textContent = todo.title;
